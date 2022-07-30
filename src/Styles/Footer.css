@@ -1,0 +1,21 @@
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(37, 37, 37);
+    color: rgb(197, 197, 197);
+    justify-items: center;
+}
+
+.footer>div>p{
+    margin: 1.5vmax;
+}
+.footer>div>p>a{
+    cursor: pointer;
+    margin: 1vmax;
+    fill: rgba(255, 255, 255, 0.705);
+}
+.footer>div>p>a:hover{
+    fill: rgb(94, 94, 94);
+}
+
+
