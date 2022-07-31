@@ -2,24 +2,38 @@ import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Slider = ({banner}) => {
+const Slider = () => {
   return (
     <div>
-          <Carousel fade>
+          <Carousel fade interval={3000}>
+        <Carousel.Item >
 
-            {banner.map((item)=>(
-              <Carousel.Item key={item}>
+          <img
+            className="d-block w-100"
+            src={require('../data/4.gif')}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item >
 
                     <img
                         className="d-block w-100"
-                        src={item}
+            src={require('../data/3.gif')}
                         alt="First slide"
                     />
-                </Carousel.Item>
+        </Carousel.Item> 
+        
+        <Carousel.Item >
 
-        ))}     
-              
-          </Carousel>     
+          <img
+            className="d-block w-100"
+            src={require('../data/5.gif')}
+            alt="First slide"
+          />
+        </Carousel.Item>
+       
+        </Carousel>
+  
     </div>
   )
 }

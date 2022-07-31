@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <Navbar/>
-      <Slider banner= {data.banner.start} />
+      <Slider />
 
       <Heading text={"NOTICE SPACE"}/>
       <NoticeSpace />
