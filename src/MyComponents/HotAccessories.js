@@ -7,7 +7,7 @@ const HotAccessories = ({ music }) => {
       <div className="HotAccessories">
           <div style={{width:"100%"}}>
               {music && music.map((item, index) => (
-                  <HotItemCard key={item.id} name={item.title} price={item.content} image={item.previewImage} index={index} />
+                  <HotItemCard key={item.id} pdfUrl={item.pdfUrl} name={item.title} price={item.content} image={item.previewImage} index={index} />
               ))}
           </div>
       </div>
