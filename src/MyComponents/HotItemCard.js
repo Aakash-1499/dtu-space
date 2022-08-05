@@ -7,7 +7,6 @@ const HotItemCard = ({ image, index, name, price }) => {
           <img src={image} alt={`${index} product`} />
           <p>{name}</p>
           <span>{price}</span>
-
       </div>
   )
 }

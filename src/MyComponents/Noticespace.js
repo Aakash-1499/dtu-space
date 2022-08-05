@@ -1,14 +1,17 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-import"../Styles/noticespace.css";
+import React from "react";
+import { Link } from "react-router-dom";
+import "../Styles/noticespace.css";
 
-
-const NoticeSpace = () => {
-    return (
-        <div className="noticespacemenu">
-            <Link className="noticespacelink" to="/university">University</Link>
-            <Link className="noticespacelink" to="/hostel">Hostel</Link>
-        </div>
-    )
-}
-export default NoticeSpace
+const NoticeSpace = ({ subCategories }) => {
+  console.log(subCategories);
+  return (
+    <div className="noticespacemenu">
+      {Object.entries(subCategories).map(([key, value]) => {
+        return (
+            <Link className="noticespacelink" to={"/"+key}>{key}</Link>
+        );
+      })}
+    </div>
+  );
+};
+export default NoticeSpace;

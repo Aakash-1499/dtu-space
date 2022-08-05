@@ -1,7 +1,8 @@
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 import Navbar from "./MyComponents/Navbar.js";
-import Slider from "./MyComponents/Slider.js"
-import data from "../src/data/data.json"
+import Slider from "./MyComponents/Slider.js";
+// import data from "../src/data/data.json";
 import Heading from "./MyComponents/Heading.js";
 import NoticeSpace from "./MyComponents/Noticespace.js";
 import Resultspace from "./MyComponents/Resultspace.js";
@@ -9,37 +10,94 @@ import Studyspace from "./MyComponents/Studyspace.js";
 import Examspace from "./MyComponents/Examspace.js";
 import Internspace from "./MyComponents/Internspace.js";
 import HotAccessories from "./MyComponents/HotAccessories.js";
-import Footer from "./MyComponents/Footer.js"
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-
-
-
+import Footer from "./MyComponents/Footer.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { getResults } from "./services/space-service";
+import { groupBy } from "lodash";
 function App() {
+  const [result, setData] = useState();
+  const [categories, setCategories] = useState({});
+  useEffect(() => {
+    getResults().then((data) => {
+      data.json().then((res) => {
+        setData(res);
+      });
+    });
+  }, []);
+  useEffect(() => {
+    console.log(result);
+    if (result && result.data) {
+      const categoriesGrouped = groupBy(result.data, "category");
+      Object.entries(categoriesGrouped).map(([key, value]) => {
+        categoriesGrouped[key] = groupBy(value, "subCategory");
+      });
+      Object.entries(categoriesGrouped).map(([key, value]) => {
+        console.log("key:", key, "\nvalue:", value);
+      });
+      setCategories(categoriesGrouped);
+    }
+  }, [result]);
+
+  // {
+  //   categories:[
+  //     "categoryName":[
+  //       {data1},{data2}
+  //     ]
+  //   ]
+  // }
+
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Slider />
+      {Object.entries(categories).map(([key, value]) => {
+        return (
+          <div className="">
+            <Heading text={key} />
+            <NoticeSpace subCategories={value} />
+            {Object.entries(value).map(([key, value]) => {
+              return (<Routes>
+                <Route
+                  path={"/"+key}
+                  element={<HotAccessories music={value} />}
+                />
+              </Routes>);
+            })}
+          </div>
+        );
+      })}
 
-      <Heading text={"NOTICE SPACE"}/>
-      <NoticeSpace />
+      {/* <Heading text={"NOTICE SPACE"} />
       <Routes>
-        <Route path="/university" element={<HotAccessories music={data.hotAccessories.music}  />} />
+        <Route
+          path="/university"
+          element={<HotAccessories music={data.hotAccessories.music} />}
+        />
         <Route path="/hostel" />
       </Routes>
-      
+
       <Heading text={"RESULT SPACE"} />
-      <Resultspace/>
+      <Resultspace />
       <Routes>
-        <Route path="/2019result" element={<HotAccessories music={data.hotAccessories.music}  />} />
+        <Route
+          path="/2019result"
+          element={<HotAccessories music={data.hotAccessories.music} />}
+        />
         <Route path="/2020result" />
         <Route path="/2021result" />
-        <Route path="/2022result" element={<HotAccessories music={data.hotAccessories.music} />} />
-      </Routes> 
+        <Route
+          path="/2022result"
+          element={<HotAccessories music={data.hotAccessories.music} />}
+        />
+      </Routes>
 
       <Heading text="STUDY SPACE" />
-      <Studyspace/>
+      <Studyspace />
       <Routes>
-        <Route path="/coe" element={<HotAccessories music={data.hotAccessories.music}  />} />
+        <Route
+          path="/coe"
+          element={<HotAccessories music={data.hotAccessories.music} />}
+        />
         <Route path="it" />
         <Route path="/se" />
         <Route path="/mce" />
@@ -57,9 +115,12 @@ function App() {
       </Routes>
 
       <Heading text="EXAM SPACE" />
-      <Examspace/>
+      <Examspace />
       <Routes>
-        <Route path="/coeexam" element={<HotAccessories music={data.hotAccessories.music}  />} />
+        <Route
+          path="/coeexam"
+          element={<HotAccessories music={data.hotAccessories.music} />}
+        />
         <Route path="itexam" />
         <Route path="/seexam" />
         <Route path="/mceexam" />
@@ -75,21 +136,17 @@ function App() {
         <Route path="/eneexam" />
         <Route path="/btexam" />
       </Routes>
-
       <Heading text="INTERN / PLACEMENT SPACE" />
-      <Internspace/>
+      <Internspace />
       <Routes>
-        <Route path="/intern" element={<HotAccessories music={data.hotAccessories.music} />} />
+        <Route
+          path="/intern"
+          element={<HotAccessories music={data.hotAccessories.music} />}
+        />
         <Route path="/placement" />
-      </Routes>
-
-
-      <Footer/>
-
-      
+      </Routes> */}
+      <Footer />
     </Router>
-    
-    
   );
 }
 
