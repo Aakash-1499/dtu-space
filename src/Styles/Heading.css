@@ -20,9 +20,15 @@
     font-weight: 100;
 }
 @media only screen and (max-width: 600px) {
-    /*Big smartphones [426px -> 600px]*/
     .heading div {
-            width: 25vw;
+            width: 20vw;
+        }
+
+}
+@media only screen and (max-width: 350px) {
+
+    .heading p {
+            margin: 0 15px;
         }
 
 }
