@@ -78,3 +78,17 @@
 .PreFooter>div:nth-child(4)>a:hover {
     fill: rgb(94, 94, 94);
 }
+
+@media only screen and (max-width: 600px) {
+    /*Big smartphones [426px -> 600px]*/
+
+    .PreFooter {
+            display: grid;
+            grid-template-columns: auto auto;
+            height: 100px;
+    }
+    .PreFooter>div:nth-child(3) {
+            align-items: center;
+            justify-content: center;
+    }
+}

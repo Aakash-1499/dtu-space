@@ -5,7 +5,7 @@ import  "../Styles/HotAccesories.css";
 const HotAccessories = ({ music }) => {
   return (
       <div className="HotAccessories">
-          <div style={{width:"100%"}}>
+          <div  className="HotWidth">
               {music && music.map((item, index) => (
                   <HotItemCard key={item.id} pdfUrl={item.pdfUrl} name={item.title} price={item.content} image={item.previewImage} index={index} />
               ))}
