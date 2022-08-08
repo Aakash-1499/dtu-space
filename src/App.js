@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./MyComponents/Navbar.js";
 import Slider from "./MyComponents/Slider.js";
-// import data from "../src/data/data.json";
 import Heading from "./MyComponents/Heading.js";
 import NoticeSpace from "./MyComponents/Noticespace.js";
 import Resultspace from "./MyComponents/Resultspace.js";
