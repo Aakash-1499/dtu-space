@@ -4,6 +4,12 @@
     height: 150px;
     grid-template-columns: auto auto auto auto;
 }
+.profile
+{
+    height: auto;
+    width: 6vw;
+
+}
 
 .PreFooter>div {
     display: flex;
@@ -71,13 +77,10 @@
 
 .PreFooter>div:nth-child(4)>a {
     cursor: pointer;
-    margin: 1vmax;
-    fill: rgba(138, 138, 138, 0.705);
+    margin: 0.5vmax;
 }
 
-.PreFooter>div:nth-child(4)>a:hover {
-    fill: rgb(94, 94, 94);
-}
+
 
 @media only screen and (max-width: 600px) {
     /*Big smartphones [426px -> 600px]*/
@@ -91,4 +94,9 @@
             align-items: center;
             justify-content: center;
     }
+        .profile {
+            height: auto;
+            width: 8vw;
+    
+        }
 }
