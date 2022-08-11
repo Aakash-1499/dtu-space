@@ -44,7 +44,7 @@ const Footer = () => {
 
                 <div>
                     
-                    <p>  <a href="http://github.com" target="_blank" rel="noopener noreferrer">{githubIcon} Want to contribute</a></p>
+                    <p>  <a href="https://github.com/Aakash-1499/dtu-space" target="_blank" rel="noopener noreferrer">{githubIcon} Want to contribute</a></p>
                     
                 </div>
 
