@@ -10,6 +10,14 @@ const Slider = () => {
 
           <img
             className="d-block w-100"
+            src={require('../data/independence.gif')}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item >
+
+          <img
+            className="d-block w-100"
             src={require('../data/4.gif')}
             alt="First slide"
           />
